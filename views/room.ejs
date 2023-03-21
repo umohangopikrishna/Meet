@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="/meet.jpg">
+   
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krishna Meet</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/peerjs.min.js"></script>
+
+</head>
+<body>
+    <div id="disconnectBox" style="width: 40%;padding: 2%;background-color: rgb(35, 49, 241);border-radius:30%;color: white;display: none;">
+       <h4></h4>
+    </div>
+    <br>
+    <input type="text" id="name" placeholder="Enter Your Name" maxlength="25" >
+    <button style="background-color: rgb(7, 207, 7);" id="startMeeting" onclick="this.disabled =true;startMeeting();">
+    <span class="glyphicon glyphicon-earphone" style="font-size: 30px;color: white;"></span>
+    </button>
+    <div id="video-placeHolder" class="grid-container">
+
+    </div>
+    
+    <div style="position: relative;left: 45%;">
+    <button style="background-color: rgb(250, 64, 40);" onclick="muteAudio()">
+    <span class="glyphicon glyphicon-volume-off" style="font-size: 30px;color: white;"></span>
+    </button>
+    <button style="background-color: rgb(250, 64, 40);" onclick="muteVideo()">
+    <span class="glyphicon glyphicon-eye-close" style="font-size: 30px;color: white;"></span>
+    </button>
+    <button style="background-color: rgb(207, 7, 7);" onclick="closeConnection();">
+        <span class="glyphicon glyphicon-earphone" style="font-size: 30px;color: white;"></span>
+    </button>
+    <button style="background-color: rgb(66, 78, 245);" onclick="shareScreen();">
+        <span class="glyphicon glyphicon-open" style="font-size: 30px;color: white;"></span>
+    </button>
+   </div>
+   
+   <div id="messageArea" style="display: none;position: relative;bottom: 9%;">
+
+   <div id="messageBox" style="width: 300px;height: 110px;overflow: auto;padding:0% 3% 0% 0%;">
+
+   </div>
+   <textarea id="textAreaMessage" rows="2" cols="35" placeholder="enter message" style="resize: none;border-radius: 5%;padding: 5px;background-color: rgb(217, 217, 243)"></textarea>
+    <input type="file" name="uploadedFile[]" id="inputfile" style="color: white;" multiple>
+
+    
+    <!-- <i id="loader" class="fa fa-refresh fa-spin" style="font-size:36px;display: block;color: white;"></i> -->
+    
+    <button id="uploadButton" style="background-color: rgb(2, 100, 117);" onclick="uploaded()">
+    <span class="glyphicon glyphicon-cloud-upload"   style="font-size: 30px;color: white;"></span>
+    </button>
+   <button style="background-color: blue;" onclick="sendMessage()">
+    <span class="glyphicon glyphicon-envelope" style="font-size: 30px;color: white;"></span>
+   </button>
+   </div>
+   
+   <script>
+        var roomId = "<%= roomId %>";
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>
